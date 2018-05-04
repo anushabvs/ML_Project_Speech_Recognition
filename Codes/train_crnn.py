@@ -1,4 +1,3 @@
-#CRNN Model
 import sys
 import os
 import tensorflow as tf
@@ -9,20 +8,22 @@ from classification import models
 from classification import trainer
 from classification import freeze
 from tensorflow.python.client import device_lib
+
+# Setting up GPU
 print(device_lib.list_local_devices())
 tf.test.gpu_device_name()
 tf.device('/gpu:0')
 
 
-#Flags
+### Flag Initialization ###
 flags=tf.app.flags
 flags=tf.app.flags
-#Important Directories
+# Intializing Source Directories
 flags.DEFINE_string('data_dir','F:\\ML_Project\\Data\\','Train Data Folder')
 flags.DEFINE_string('summaries_dir','F:\\ML_Project\\Data\\summaries\\','Summaries Folder')
 flags.DEFINE_string('train_dir','F:\\ML_Project\\Data\\logs&checkpoint\\','Directory to write event logs and checkpoint')
 flags.DEFINE_string('models_dir','F:\\ML_Project\\models\\','Models Folder')
-#Task Specific Parameters
+# Intializing Task Specific Parameters
 flags.DEFINE_string('wanted_words','yes,no,up,down,left,right,on,off,stop,go','Wanted Words')
 flags.DEFINE_float('validation_percentage',10,'Validation Percentage')
 flags.DEFINE_float('testing_percentage',10,'Testing Percentage')
