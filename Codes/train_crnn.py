@@ -18,11 +18,13 @@ tf.device('/gpu:0')
 ### Flag Initialization ###
 flags=tf.app.flags
 flags=tf.app.flags
+
 # Intializing Source Directories
 flags.DEFINE_string('data_dir','F:\\ML_Project\\Data\\','Train Data Folder')
 flags.DEFINE_string('summaries_dir','F:\\ML_Project\\Data\\summaries\\','Summaries Folder')
 flags.DEFINE_string('train_dir','F:\\ML_Project\\Data\\logs&checkpoint\\','Directory to write event logs and checkpoint')
 flags.DEFINE_string('models_dir','F:\\ML_Project\\models\\','Models Folder')
+
 # Intializing Task Specific Parameters
 flags.DEFINE_string('wanted_words','yes,no,up,down,left,right,on,off,stop,go','Wanted Words')
 flags.DEFINE_float('validation_percentage',10,'Validation Percentage')
@@ -36,8 +38,7 @@ flags.DEFINE_float('time_shift_ms',100.0,'Range to randomly shift the training a
 
 FLAGS=flags.FLAGS
 
-# Variables
-
+# Initializing Variables
 model_architecture='c_rnn'
 start_checkpoint=None
 logging_interval=10
@@ -47,8 +48,8 @@ silence_percentage=10.0
 unknown_percentage=10.0
 background_frequency=0.8
 background_volume=0.3
-learning_rate='0.0005,0.0001,0.00002' #Always seperated by comma, trains with each of the learning rate for the given number of iterations
-train_steps='10000,10000,10000' #Declare  the training steps for which the learning rates will be used
+learning_rate='0.0005,0.0001,0.00002' # Training with different learning rates for different iterations
+train_steps='10000,10000,10000'       # No. of iterations for each learning rate  
 batch_size=256
 model_size_info=[48, 10, 4, 2, 2, 2, 60, 84]
 
