@@ -1,4 +1,4 @@
-### Made modifications to the code by Subhojeet Pramanik ###
+### Made modifications to the code by Subhojeet Pramanik which itself is a modification of tensorflow speech command function ###
 
 """
 Universal Trainer Script. Responsible for loading, creating checkpoints and supervised training on data given logits and
