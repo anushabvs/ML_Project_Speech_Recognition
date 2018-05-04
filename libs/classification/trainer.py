@@ -1,7 +1,5 @@
-# Cognitbit Solutions LLP
-#
-# Author: Subhojeet Pramanik
-# ==============================================================================
+### Made modifications to the code by Subhojeet Pramanik ###
+
 """
 Universal Trainer Script. Responsible for loading, creating checkpoints and supervised training on data given logits and
 a get_data() function. 
@@ -43,7 +41,7 @@ def train(sess, logits, fingerprint_input, ground_truth_input, get_train_data, g
     Returns:
          None
     """
-    # Modify here to get the required varibales in the training function.
+    # Modify here to get the required variables in the training function.
     dropout_prob, label_count, batch_size, val_size = args
 
     training_steps_list = list(map(int, training_steps.split(',')))
@@ -53,13 +51,13 @@ def train(sess, logits, fingerprint_input, ground_truth_input, get_train_data, g
             'training_steps and learning_rate must be equal length '
             'lists, but are %d and %d long instead' % (len(training_steps_list),
                                                        len(learning_rates_list)))
-    # Calculate the loss.
+    # Calculating the loss.
     with tf.name_scope('cross_entropy'):
         cross_entropy_mean = tf.reduce_mean(
             tf.nn.softmax_cross_entropy_with_logits(
                 labels=ground_truth_input, logits=logits))
     tf.summary.scalar('cross_entropy', cross_entropy_mean)
-    # Add the optimization function
+    # Adding the optimization function
     with tf.name_scope('train'):
         learning_rate_input = tf.placeholder(
             tf.float32, [], name='learning_rate_input')
