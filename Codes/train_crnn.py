@@ -90,7 +90,7 @@ def get_test_data(args):
 
 def main(_):
     sess=tf.InteractiveSession()
-    # Placeholders
+    # Initializing Placeholders
     fingerprint_size = model_settings['fingerprint_size']
     label_count = model_settings['label_count']
     fingerprint_input = tf.placeholder(
@@ -100,16 +100,15 @@ def main(_):
     set_size = audio_processor.set_size('validation')
     label_count = model_settings['label_count']
     
-    # Create Model
-    
-    logits, dropout_prob = models.create_model(
+    # Creating CRNN Model
+      logits, dropout_prob = models.create_model(
       fingerprint_input,
       model_settings,
       model_architecture,
       model_size_info=model_size_info,
       is_training=True)
     
-    #Start Training
+    # Start Training
     extra_args=(dropout_prob,label_count,batch_size,set_size)
     trainer.train(sess,logits,fingerprint_input,ground_truth_input,get_train_data,
                   get_val_data,train_steps,learning_rate,eval_step_interval, logging_interval=logging_interval,
@@ -117,7 +116,7 @@ def main(_):
                   model_name=model_architecture,train_dir=FLAGS.train_dir,
                   summaries_dir=FLAGS.summaries_dir,args=extra_args)
 tf.app.run(main=main)
-save_checkpoint='F:\\ML_Project\\Data\\logs&checkpoint\\c_rnn\\ckpt-42000'
+save_checkpoint='F:\\ML_Project\\Data\\logs&checkpoint\\c_rnn\\ckpt-30000'
 save_path=os.path.join(FLAGS.models_dir,model_architecture,'%s-batched.pb'%os.path.basename(save_checkpoint))
 freeze.freeze_graph(FLAGS,model_architecture,save_checkpoint,save_path,batched=True,model_size_info=model_size_info)
 save_path=os.path.join(FLAGS.models_dir,model_architecture,'%s-batched.pb'%os.path.basename(save_checkpoint))
