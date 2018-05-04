@@ -4,15 +4,17 @@ import sys
 import numpy as np
 import pandas as pd
 
-
 sys.path.append("../libs")
+
 from classification import label_wav
 from classification import input_data
 from classification import models
 from tensorflow.python.platform import gfile
 
+# Intializing Flags
 flags=tf.app.flags
-#Important Directories
+
+# Initializing Directories
 flags.DEFINE_string('data_dir','C:\\Users\\klp\\Downloads\\ML_Mahera\\Data\\','Train Data Folder')
 flags.DEFINE_string('summaries_dir','C:\\Users\\klp\\Downloads\\ML_Mahera\\Data\\summaries','Summaries Folder')
 flags.DEFINE_string('results_dir','C:\\Users\\klp\\Downloads\\ML_Mahera\\Data\\results','Directory to write event logs and checkpoint')
@@ -21,18 +23,18 @@ flags.DEFINE_string('predictions_dir','C:\\Users\\klp\\Downloads\\ML_Mahera\\pre
 flags.DEFINE_string('wanted_words','yes,no,up,down,left,right,on,off,stop,go','Wanted Words')
 FLAGS=flags.FLAGS
 
-#Variables
+# Retrieving saved model data
 model_architecture='c_rnn'
 model_version='30000'
 test_dir=os.path.join(FLAGS.data_dir,'test','*.wav')
 testing_files_list=sorted(gfile.Glob(test_dir))
 
-#Predict
+# Predicting labels of test files using saved model
 labels_list=input_data.prepare_words_list(FLAGS.wanted_words.split(','))
 graph=os.path.join(FLAGS.models_dir,model_architecture,'ckpt-'+model_version+'-small-batched.pb')
 pred_mat,pred=label_wav.label_wav_batched(testing_files_list,labels_list,graph,batch_size=1000)
-print(pred_mat)
-print(pred)
+
+# Saving the predicted labels in a csv file
 save_folder='r_cnn_output'
 save_path=os.path.join(FLAGS.predictions_dir,save_folder)
 if not os.path.exists(save_path):
@@ -42,4 +44,4 @@ for f in testing_files_list:
     f_names.append(os.path.basename(f))
 pred_df=pd.DataFrame({'fname':f_names,'label':pred})
 pred_df.to_csv(os.path.join(save_path,'predictions.csv'),index=None)
-print(pred_df)
+print(pred_df)  # Printing predicted dataframe
