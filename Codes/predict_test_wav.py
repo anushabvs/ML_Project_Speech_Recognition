@@ -35,7 +35,7 @@ graph=os.path.join(FLAGS.models_dir,model_architecture,'ckpt-'+model_version+'-s
 pred_mat,pred=label_wav.label_wav_batched(testing_files_list,labels_list,graph,batch_size=1000)
 
 # Saving the predicted labels in a csv file
-save_folder='r_cnn_output'
+save_folder='c_rnn_output'
 save_path=os.path.join(FLAGS.predictions_dir,save_folder)
 if not os.path.exists(save_path):
     os.makedirs(save_path)
