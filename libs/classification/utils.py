@@ -1,11 +1,9 @@
-# Author: Subhojeet Pramanik
-# ==============================================================================
+### Modification of the code by Subhojeet Pramanik which itself is the modification of Tensorflow speech commands function ###
 """
 This script contains a basic template for:
     1. Spliting the dataset into train, test and validation sets
     2. Generating a sample dataset
     3. Printing the sample dataset
-    4. Cleaning
 """
 import os
 import numpy as np
