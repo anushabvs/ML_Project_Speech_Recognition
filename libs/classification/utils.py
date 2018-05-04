@@ -1,5 +1,3 @@
-# Cognitbit Solutions LLP
-#
 # Author: Subhojeet Pramanik
 # ==============================================================================
 """
