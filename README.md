@@ -27,17 +27,17 @@ C-RNN (https://arxiv.org/pdf/1711.07128.pdf)
 
 **Code Architecture**
 
--Download the data for tensorflow speech commands and store it as train/audio and test/audio.
--Go to libs/classification and run the python files to prepare the data for training
--run Codes/train_crnn.py to train the CRNN
--The trained model is saved in checkpoints
--To test the trained model run, Codes/predict_test_wav.py
+- Download the data for tensorflow speech commands and store it as train/audio and test/audio.
+- Go to libs/classification and run the python files to prepare the data for training
+- run Codes/train_crnn.py to train the CRNN
+- The trained model is saved in checkpoints
+- To test the trained model run, Codes/predict_test_wav.py
 
-References
+**References**
 
--C-RNN (https://arxiv.org/pdf/1711.07128.pdf)
--ML-KWS-for-MCU (https://github.com/ARM-software/ML-KWS-for-MCU) 
--Very Deep Convolutional Neural Network for Robust Speech Recognition (https://arxiv.org/pdf/1610.00277.pdf) 
--Speech Commands Dataset (https://research.googleblog.com/2017/08/launching-speech-commands-dataset.html) 
--ensorflow audio recognition tutorials: https://www.tensorflow.org/versions/master/tutorials/audio_recognition
+- C-RNN (https://arxiv.org/pdf/1711.07128.pdf)
+- ML-KWS-for-MCU (https://github.com/ARM-software/ML-KWS-for-MCU) 
+- Very Deep Convolutional Neural Network for Robust Speech Recognition (https://arxiv.org/pdf/1610.00277.pdf) 
+- Speech Commands Dataset (https://research.googleblog.com/2017/08/launching-speech-commands-dataset.html) 
+- Tensorflow audio recognition tutorials: https://www.tensorflow.org/versions/master/tutorials/audio_recognition
 
