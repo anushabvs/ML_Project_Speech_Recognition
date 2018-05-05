@@ -28,7 +28,7 @@ flags.DEFINE_string('models_dir','F:\\ML_Project\\models\\','Models Folder')
 # Intializing Task Specific Parameters
 flags.DEFINE_string('wanted_words','yes,no,up,down,left,right,on,off,stop,go','Wanted Words')
 flags.DEFINE_float('validation_percentage',10,'Validation Percentage')
-flags.DEFINE_float('testing_percentage',10,'Testing Percentage')
+#flags.DEFINE_float('testing_percentage',10,'Testing Percentage')
 flags.DEFINE_integer('sample_rate',16000,'Sample Rate')
 flags.DEFINE_integer('clip_duration_ms',1000,'Clip Duration in ms')
 flags.DEFINE_float('window_size_ms',40,'How long each spectogram timeslice is')
